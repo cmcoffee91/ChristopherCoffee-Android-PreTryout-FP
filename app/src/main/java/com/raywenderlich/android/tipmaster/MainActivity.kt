@@ -28,12 +28,11 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.android.rwandroidtutorial
+package com.raywenderlich.android.tipmaster
 
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -46,6 +45,7 @@ class MainActivity : AppCompatActivity() {
   var isBillEmpty = true
   var isGuestAmountEmpty = true
   var isPercentEmpty = true
+  private var tipPercentage = 20.0
 
   override fun onCreate(savedInstanceState: Bundle?) {
     // Switch to AppTheme for displaying the activity
@@ -63,16 +63,24 @@ class MainActivity : AppCompatActivity() {
 
     calculateButton.setOnClickListener {
 
-      var billTotal = billAmountInput.text.toString().toDouble()
-      var numberOfGuests = numberOfPeople.text.toString().toDouble()
-      var tipPercentage = percentAmountInput.text.toString().toDouble()
-      var billSplit = billTotal / numberOfGuests
+      val billTotal = billAmountInput.text.toString().toDouble()
+      val numberOfGuests = numberOfPeople.text.toString().toDouble()
+      tipPercentage = percentAmountInput.text.toString().toDouble()
+      val billSplit = billTotal / numberOfGuests
 
-      var totalTipAmount = (billSplit * tipPercentage) / 100.0
+      val totalTipAmount = (billSplit * tipPercentage) / 100.0
 
 
       tipAmount.text = getString(R.string.tip, totalTipAmount)
 
+    }
+
+
+    clearButton.setOnClickListener {
+      billAmountInput.setText("")
+      numberOfPeople.setText("")
+      percentAmountInput.setText("")
+      tipAmount.text = getString(R.string.tip, 0.0)
     }
 
 
@@ -82,7 +90,10 @@ class MainActivity : AppCompatActivity() {
   }
 
 
-  fun  initTextListeners(){
+
+
+
+  private fun  initTextListeners(){
 
 
     billAmountInput.addTextChangedListener(object : TextWatcher {

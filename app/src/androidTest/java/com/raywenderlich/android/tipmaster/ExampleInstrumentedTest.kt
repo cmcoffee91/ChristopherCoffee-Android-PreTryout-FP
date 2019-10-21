@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.android.rwandroidtutorial
+package com.raywenderlich.android.tipmaster
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4

@@ -1,3 +1,10 @@
 <resources>
-  <string name="app_name">RWAndroidTutorial</string>
+  <string name="app_name">Tip Master</string>
+
+  <string name="tip">Each person pays a tip of $%.2f</string>
+  <string name="calculate">Calculate</string>
+  <string name="percent">Tip Percentage</string>
+  <string name="number_people">Total Number of Guests</string>
+  <string name="bill_amount">Bill Total</string>
+  <string name="clear">Clear</string>
 </resources>
